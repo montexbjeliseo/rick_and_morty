@@ -11,7 +11,7 @@ let app = document.getElementById("app");
 let apiUrl = "https://rickandmortyapi.com/api/character";
 
 async function requestData(url){
-    let request = await fetch(url)
+    return await fetch(url)
   .then(response => response.json())
   .then(data => {
     return data.results;
@@ -20,7 +20,7 @@ async function requestData(url){
 
 async function cargarPersonajes(){
     
-    let lista_personajes = requestData(apiUrl);
+    let lista_personajes = await requestData(apiUrl);
 
     lista_personajes.forEach(personaje => {
         let divPersonaje = document.createElement("div");
