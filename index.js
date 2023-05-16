@@ -14,12 +14,13 @@ async function requestData(url){
     let request = await fetch(url)
   .then(response => response.json())
   .then(data => {
-    cargarPersonajes(data.results);
+    return data.results;
   });
 }
 
-function cargarPersonajes(lista_personajes){
-    let lista = document.createElement("ul");
+async function cargarPersonajes(){
+    
+    let lista_personajes = requestData(apiUrl);
 
     lista_personajes.forEach(personaje => {
         let divPersonaje = document.createElement("div");
@@ -43,4 +44,4 @@ function cargarPersonajes(lista_personajes){
     });
 }
 
-requestData(apiUrl);
+cargarPersonajes();
