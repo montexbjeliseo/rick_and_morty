@@ -1,0 +1,19 @@
+.personaje-container {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #c1c1c1;
+    border-radius: 3px;
+    display: inline-block;
+    width: 300px;
+    box-sizing: border-box;
+    margin: 10px;
+}
+
+.personaje-container img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.personaje-container h2 {
+    color: #444;
+}
