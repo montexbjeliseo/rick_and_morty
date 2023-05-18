@@ -24,24 +24,39 @@ async function cargarPersonajes(){
 
     lista_personajes.forEach(personaje => {
         let divPersonaje = document.createElement("div");
+        divPersonaje.classList.add("personaje-container");
         
         let img = document.createElement("img");
         img.src = personaje.image;
 
-        let nombre = document.createElement("h1");
-        nombre.innerText = personaje.name;
+        let nombre = document.createElement("h2");
+        let textoNombre = document.createTextNode(personaje.name);
+        nombre.appendChild(textoNombre);
 
         let especie = document.createElement("p");
-        especie.innerText = personaje.species;
+        let textoEspecie = document.createTextNode(personaje.species);
+        especie.appendChild(textoEspecie);
+
+        let botonEliminar = document.createElement("button");
+        let textoEliminar = document.createTextNode("Eliminar");
+        botonEliminar.appendChild(textoEliminar);
+        botonEliminar.addEventListener('click', onclickEliminar);
         
+
+        // Agregar los elementos al contenedor del personaje
         divPersonaje.appendChild(img);
         divPersonaje.appendChild(nombre);
         divPersonaje.appendChild(especie);
+        divPersonaje.appendChild(botonEliminar);
 
         app.appendChild(divPersonaje);
-
-        divPersonaje.style.border = "1px solid black";
     });
+}
+
+function onclickEliminar(event){
+  // Nodo del personaje
+  let personaje_container = event.target.parentNode;
+  app.removeChild(personaje_container);
 }
 
 cargarPersonajes();
